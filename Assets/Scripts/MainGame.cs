@@ -6,16 +6,18 @@ using UnityEngine.UI;
 
 public class MainGame : MonoBehaviour
 {
-    private Player[] player = new Player[3];
+    public Player[] player = new Player[3];
     public Transportation[] transportations = new Transportation[4];
-    private int currentRound = 0;
+    private int currentRound = 1;
+    private int currentPlayer = 0;
+    public RoundPanel roundPanel;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        roundPanel.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -30,13 +32,36 @@ public class MainGame : MonoBehaviour
     public void ChooseTransportation(int order)
     {
         Transportation usetrans = transportations[order];
-        float move = usetrans.PickRandom(usetrans.canMove);
-        float res = usetrans.PickRandom(usetrans.addResource);
-        float water = usetrans.PickRandom(usetrans.addWater);
-        float pollute = usetrans.PickRandom(usetrans.addPollute);
+        Player cplayer = player[currentPlayer];
+        int move = usetrans.PickRandom(usetrans.canMove);
+        int res = usetrans.PickRandom(usetrans.addResource);
+        int water = usetrans.PickRandom(usetrans.addWater);
+        int pollute = usetrans.PickRandom(usetrans.addPollute);
 
-        Debug.Log($"Player {0} => USE={order} | MOVE={move} | RES={res} WATER={water} POLLUTE={pollute}");
+        cplayer.resource += res;
+        cplayer.water += water;
+        cplayer.pollution += pollute;
+        
+        roundPanel.SetValues(move, res, water, pollute, currentRound);
+
+        Debug.Log($"Player {currentPlayer} => USE={order} | MOVE={move} | RES={res} WATER={water} POLLUTE={pollute}");
     }
+
+    /// <summary>
+    /// call by RoundPanel
+    /// </summary>
+    public void RoundEnd()
+    {       
+        currentPlayer++;
+        if(currentPlayer >= player.Length)
+        {
+            currentPlayer = 0;
+            currentRound++;
+            Debug.Log($"=== Round {currentRound} ===");
+        }
+        Debug.Log($"- Player {currentPlayer}'s phase -");
+    }
+
 }
 
 

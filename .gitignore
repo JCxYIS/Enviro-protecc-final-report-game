@@ -58,6 +58,8 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+/.vscode
+
 /Assets/pic/eea.jpg
 /Assets/pic/maxresdefault (1).jpg
 /Assets/pic/smudgeyyy.jpg
