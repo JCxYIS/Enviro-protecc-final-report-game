@@ -11,6 +11,8 @@ public class MainGame : MonoBehaviour
     private int currentRound = 1;
     private int currentPlayer = 0;
     public RoundPanel roundPanel;
+    public GameObject gameoverPanel;
+    public Animator charaAnim;
 
 
 
@@ -18,6 +20,7 @@ public class MainGame : MonoBehaviour
     void Start()
     {
         roundPanel.gameObject.SetActive(false);
+        gameoverPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -27,6 +30,7 @@ public class MainGame : MonoBehaviour
         {
             trans.UpdateText();
         }
+        player[currentPlayer].isMyTurn = true;
     }
 
     public void ChooseTransportation(int order)
@@ -52,14 +56,44 @@ public class MainGame : MonoBehaviour
     /// </summary>
     public void RoundEnd()
     {       
-        currentPlayer++;
-        if(currentPlayer >= player.Length)
+        int passedCombo = 0;
+        while(true)
         {
-            currentPlayer = 0;
-            currentRound++;
-            Debug.Log($"=== Round {currentRound} ===");
+            currentPlayer++;            
+            if(currentPlayer >= player.Length)
+            {
+                currentPlayer = 0;
+                currentRound++;
+                Debug.Log($"=== Round {currentRound} ===");
+            }
+
+            if(!player[currentPlayer].isEnded)
+            {
+                break;
+            }
+
+            passedCombo++;
+            if(passedCombo >= 3)
+            {
+                Debug.Log("Game Has Ended!");
+                gameoverPanel.SetActive(true);
+                charaAnim.Play("CHARA_END");
+                return;
+            }
         }
         Debug.Log($"- Player {currentPlayer}'s phase -");
+    }
+    public void ThisPlayerHasArrived()
+    {
+        player[currentPlayer].isEnded = true;
+        Debug.Log($"- Player {currentPlayer} has ended! -");
+    }
+
+
+
+    public void RestartGame()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
     }
 
 }

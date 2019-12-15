@@ -5,7 +5,7 @@ public class RoundPanel : MonoBehaviour {
     [SerializeField] Text[] valueText;
     [SerializeField] Text rdText;
     [SerializeField] MainGame mainGame;
-    const int deltaSpeed = 50; // how many frames?
+    const int deltaSpeed = 30; // how many frames?
     float[] delta = new float[4];
     float[] values = new float[4];
     int frameCount = 0;
@@ -58,7 +58,8 @@ public class RoundPanel : MonoBehaviour {
     }
     public void PlayerArrived()
     {
-        throw new System.Exception();
+        mainGame.ThisPlayerHasArrived();
+        EndRound();
     }
 
 }
