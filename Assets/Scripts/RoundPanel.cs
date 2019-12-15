@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class RoundPanel : MonoBehaviour {
     [SerializeField] Text[] valueText;
-    [SerializeField] Text rdText;
     [SerializeField] MainGame mainGame;
     const int deltaSpeed = 30; // how many frames?
     float[] delta = new float[4];
@@ -43,7 +42,6 @@ public class RoundPanel : MonoBehaviour {
         }
         frameCount = 0;
 
-        rdText.text = $"ROUND {rd.ToString("00")}";
         gameObject.SetActive(true);
     }
 
@@ -53,6 +51,10 @@ public class RoundPanel : MonoBehaviour {
         gameObject.SetActive(false);
     }
     public void StartMiniGame()
+    {
+        throw new System.Exception();
+    }
+    public void OptionBus()
     {
         throw new System.Exception();
     }

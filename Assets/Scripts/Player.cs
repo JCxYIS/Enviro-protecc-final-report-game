@@ -2,9 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
-    public float resource;
-    public float water;
-    public float pollution;
+    public int time = 40;
+    public int resource;
+    public int water;
+    public int pollution;
     [SerializeField] Text playerText;  
 
     [HideInInspector] public bool isMyTurn;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour {
     void Update()
     {
         string s = "";
+        s += $"<color=gray>剩餘 {time} 分鐘</color>\n";
         s += $"<color=black>資源 -{resource}</color>\n";
         s += $"<color=blue>水源 -{water}</color>\n";
         s += $"<color=magenta>汙染 -{pollution}</color>\n";
