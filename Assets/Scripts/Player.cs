@@ -7,7 +7,9 @@ public class Player : MonoBehaviour {
     public int resource;
     public int water;
     public int pollution;
+    public int card203WalkCount = 0;
     public List<Card> ownedTreasure = new List<Card>();
+    public List<Card> ownedRDeffect = new List<Card>();
     [SerializeField] Text playerText;  
 
     [HideInInspector] public bool isMyTurn;
@@ -30,6 +32,8 @@ public class Player : MonoBehaviour {
         s += $"<color=magenta>汙染<b>＋{pollution}</b></color>\n";
         if(ownedTreasure.Count > 0)
             s += $"<i>持有寶物：{ownedTreasure.Count}</i>\n";
+        if(ownedRDeffect.Count > 0)
+            s += $"<i>回合效果：{ownedRDeffect.Count}</i>\n";
         playerText.text = s;
 
         

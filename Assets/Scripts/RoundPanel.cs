@@ -58,6 +58,10 @@ public class RoundPanel : MonoBehaviour {
     {
         mainGame.setParamPanel.InitPanel();
     }
+    public void StartChanceGame()
+    {
+        mainGame.chanceGayPanel.StartGame();
+    }
     public void PlayerArrived()
     {
         mainGame.ThisPlayerHasArrived();

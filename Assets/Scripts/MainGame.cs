@@ -14,9 +14,9 @@ public class MainGame : MonoBehaviour
     public RoundPanel roundPanel;
     public GameObject gameoverPanel;
     public MiniGay minigamePanel;
+    public ChanceGay chanceGayPanel;
     public SetParam setParamPanel;
     public Animator charaAnim;
-
 
 
     // Start is called before the first frame update
@@ -26,6 +26,7 @@ public class MainGame : MonoBehaviour
         gameoverPanel.SetActive(false);
         minigamePanel.gameObject.SetActive(false);
         setParamPanel.gameObject.SetActive(false);
+        chanceGayPanel.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -35,22 +36,42 @@ public class MainGame : MonoBehaviour
         {
             transportations[i].UpdateText();
         }
+        player[currentPlayer].isMyTurn = true;
+
         if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(101)))
             transportations[4].UpdateText();
-        else if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(102))) // 韓總bike
+        if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(102))) // 韓總bike
             transportations[5].UpdateText();
-        player[currentPlayer].isMyTurn = true;
+        if(GetCurrentPlayer().ownedRDeffect.Contains(GetCardByID(202))) // shared bike
+            transportations[6].UpdateText();
+        if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(204))) // 遠東
+            transportations[7].UpdateText();
+
     }
 
     public void ChooseTransportation(int order)
     {
+        
+        Player cplayer = player[currentPlayer];
         if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(101)) && order == 2) // 皮卡車
             order = 4;
         else if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(102)) && order == 1) // 韓總bike
             order = 5;
-
+        else if(GetCurrentPlayer().ownedRDeffect.Contains(GetCardByID(202)) && order == 2) // shared bike
+            order = 6;
+        else if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(203)) && order == 0) // marathron
+        {
+            cplayer.card203WalkCount++;
+            if(cplayer.card203WalkCount >= 3)
+            {
+                cplayer.water -= 10;
+                cplayer.card203WalkCount = 0;
+            }
+        }
+        else if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(204)) && order == 3) // far east
+            order = 7;
+        
         Transportation usetrans = transportations[order];
-        Player cplayer = player[currentPlayer];
         int move = usetrans.PickRandom(usetrans.canMove);
         int res = usetrans.PickRandom(usetrans.addResource);
         int water = usetrans.PickRandom(usetrans.addWater);
@@ -60,6 +81,7 @@ public class MainGame : MonoBehaviour
         cplayer.water += water;
         cplayer.pollution += pollute;
         cplayer.time += 1;
+        cplayer.ownedRDeffect.Clear();
         
         roundPanel.SetValues(move, res, water, pollute, currentRound);
 
