@@ -22,10 +22,10 @@ public class Player : MonoBehaviour {
     void Update()
     {
         string s = "";
-        s += $"<color=gray>剩餘 {time} 分鐘</color>\n";
-        s += $"<color=black>資源 -{resource}</color>\n";
-        s += $"<color=blue>水源 -{water}</color>\n";
-        s += $"<color=magenta>汙染 -{pollution}</color>\n";
+        s += $"<color=gray>剩餘 <b>{time}</b> 分鐘</color>\n";
+        s += $"<color=black>資源<b>－{resource}</b></color>\n";
+        s += $"<color=blue>水源<b>－{water}</b></color>\n";
+        s += $"<color=magenta>汙染<b>＋{pollution}</b></color>\n";
         playerText.text = s;
 
         
@@ -40,7 +40,7 @@ public class Player : MonoBehaviour {
         }
         else
         {
-            kwonkwonImage.color = Color.gray;
+            kwonkwonImage.color = Color.clear;
         }
     }
 }

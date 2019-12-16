@@ -45,6 +45,7 @@ public class MainGame : MonoBehaviour
         cplayer.resource += res;
         cplayer.water += water;
         cplayer.pollution += pollute;
+        cplayer.time -= 1;
         
         roundPanel.SetValues(move, res, water, pollute, currentRound);
 
@@ -83,6 +84,11 @@ public class MainGame : MonoBehaviour
         }
         Debug.Log($"- Player {currentPlayer}'s phase -");
     }
+    public void ThisPlayerRideBus()
+    {
+        player[currentPlayer].time -= 2;
+        Debug.Log($"Player {currentPlayer} decided to ride the bus!");
+    }
     public void ThisPlayerHasArrived()
     {
         player[currentPlayer].isEnded = true;
@@ -116,10 +122,11 @@ public class Transportation
     public void UpdateText()
     {
         string s = "";
-        s += $"-<color=green>可移動 {canMove.less}~{canMove.most} 格</color>-\n";
-        s += $"<color=black>資源 -{addResource.less}~{addResource.most}</color>\n";
-        s += $"<color=blue>水源 -{addWater.less}~{addWater.most}</color>\n";
-        s += $"<color=purple>汙染 -{addPollute.less}~{addPollute.most}</color>\n";
+        s += $"-<color=green>可移動 <b>{canMove.less}</b>~<b>{canMove.most}</b> 格</color>-\n";
+        s += $"<color=gray>消耗 <b>1</b> 分鐘</color>\n";
+        s += $"<color=black>資源<b>－{addResource.less}</b>~<b>{addResource.most}</b></color>\n";
+        s += $"<color=blue>水源<b>－{addWater.less}</b>~<b>{addWater.most}</b></color>\n";
+        s += $"<color=purple>汙染<b>＋{addPollute.less}</b>~<b>{addPollute.most}</b></color>\n";
         transText.text = s;
     }
     public int PickRandom(RandomFormat rand)
