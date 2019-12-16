@@ -936,6 +936,7 @@ MonoBehaviour:
       less: 1
       most: 2
     transText: {fileID: 2136554078}
+    transName: {fileID: 1588717023}
   - name: "\u8173\u8E0F\u8ECA"
     canMove:
       less: 1
@@ -950,6 +951,7 @@ MonoBehaviour:
       less: 1
       most: 3
     transText: {fileID: 1744613194}
+    transName: {fileID: 902068459}
   - name: "\u6A5F\u8ECA"
     canMove:
       less: 1
@@ -964,6 +966,7 @@ MonoBehaviour:
       less: 10
       most: 15
     transText: {fileID: 480965216}
+    transName: {fileID: 1187586625}
   - name: "\u98DB\u6A5F"
     canMove:
       less: 2
@@ -978,6 +981,7 @@ MonoBehaviour:
       less: 13
       most: 25
     transText: {fileID: 320353144}
+    transName: {fileID: 1739168746}
   - name: "\u76AE\u5361\u4E18\u96FB\u52D5\u6A5F\u8ECA"
     canMove:
       less: 2
@@ -991,7 +995,23 @@ MonoBehaviour:
     addPollute:
       less: 0
       most: 0
-    transText: {fileID: 320353144}
+    transText: {fileID: 480965216}
+    transName: {fileID: 1187586625}
+  - name: "\u97D3\u7E3D\u8173\u8E0F\u8ECA"
+    canMove:
+      less: 2
+      most: 3
+    addResource:
+      less: 4
+      most: 6
+    addWater:
+      less: 2
+      most: 4
+    addPollute:
+      less: 1
+      most: 3
+    transText: {fileID: 1744613194}
+    transName: {fileID: 902068459}
   cards:
   - id: 1
     type: 0
@@ -1617,15 +1637,15 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 118
-    m_Alignment: 3
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "<color=gray>\u5269\u9918 0 \u5206\u9418</color>\n<color=black>\u8CC7\u6E90
     -0</color>\n<color=blue>\u6C34\u6E90 -0</color>\n<color=magenta>\u6C59\u67D3
-    -0</color>"
+    -0</color>\n<i>B</i>"
 --- !u!222 &448761149
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2841,11 +2861,11 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 118
-    m_Alignment: 3
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "<color=gray>\u5269\u9918 0 \u5206\u9418</color>\n<color=black>\u8CC7\u6E90
     -0</color>\n<color=blue>\u6C34\u6E90 -0</color>\n<color=magenta>\u6C59\u67D3
@@ -3149,11 +3169,11 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 118
-    m_Alignment: 3
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "<color=gray>\u5269\u9918 0 \u5206\u9418</color>\n<color=black>\u8CC7\u6E90
     -0</color>\n<color=blue>\u6C34\u6E90 -0</color>\n<color=magenta>\u6C59\u67D3
@@ -5541,8 +5561,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -30}
-  m_SizeDelta: {x: 1661.8, y: 578}
+  m_AnchoredPosition: {x: 0, y: -167.7}
+  m_SizeDelta: {x: 1661.8, y: 682.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1779822175
 MonoBehaviour:

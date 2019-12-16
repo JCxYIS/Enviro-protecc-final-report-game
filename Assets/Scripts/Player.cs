@@ -28,6 +28,8 @@ public class Player : MonoBehaviour {
         s += $"<color=black>資源<b>－{resource}</b></color>\n";
         s += $"<color=blue>水源<b>－{water}</b></color>\n";
         s += $"<color=magenta>汙染<b>＋{pollution}</b></color>\n";
+        if(ownedTreasure.Count > 0)
+            s += $"<i>持有寶物：{ownedTreasure.Count}</i>\n";
         playerText.text = s;
 
         

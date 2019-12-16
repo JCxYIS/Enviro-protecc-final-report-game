@@ -29,15 +29,24 @@ public class MainGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach(Transportation trans in transportations)
+        for(int i = 0; i < 4; i++)
         {
-            trans.UpdateText();
+            transportations[i].UpdateText();
         }
+        if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(101)))
+            transportations[4].UpdateText();
+        else if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(102))) // 韓總bike
+            transportations[5].UpdateText();
         player[currentPlayer].isMyTurn = true;
     }
 
     public void ChooseTransportation(int order)
     {
+        if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(101)) && order == 2) // 皮卡車
+            order = 4;
+        else if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(102)) && order == 1) // 韓總bike
+            order = 5;
+
         Transportation usetrans = transportations[order];
         Player cplayer = player[currentPlayer];
         int move = usetrans.PickRandom(usetrans.canMove);
@@ -102,6 +111,16 @@ public class MainGame : MonoBehaviour
         Debug.Log($"- Player {currentPlayer} has ended! -");
     }
 
+
+    Card GetCardByID(int id)
+    {
+        foreach(Card c in cards)
+        {
+            if(c.id == id)
+                return c;
+        }
+        return null;
+    }
 
 
     public void RestartGame()
