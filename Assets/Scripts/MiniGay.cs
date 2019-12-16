@@ -29,11 +29,12 @@ public class MiniGay : MonoBehaviour
         {
             if(c.type != Card.Type.chance)
             {
-                if(mainGame.GetCurrentPlayer().ownedTreasure)
-                cardpool.Add(c);
+                if(!mainGame.GetCurrentPlayer().ownedTreasure.Contains(c))
+                    cardpool.Add(c);
             }
         }
-        Random.Range()
+        int getCard = Random.Range(0, cardpool.Count);
+        Card finalCard = cardpool[getCard];
     }
 
 }

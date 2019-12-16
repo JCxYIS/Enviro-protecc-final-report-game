@@ -766,7 +766,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 271137106}
-        m_MethodName: RestartGame
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -973,6 +973,40 @@ MonoBehaviour:
       less: 13
       most: 25
     transText: {fileID: 320353144}
+  cards:
+  - id: 1
+    type: 0
+    sprite: {fileID: 21300000, guid: f05638c9599ee894eba2cc7bff30c71a, type: 3}
+  - id: 2
+    type: 0
+    sprite: {fileID: 21300000, guid: f0b95bd20f10044408e38232f697d699, type: 3}
+  - id: 3
+    type: 0
+    sprite: {fileID: 21300000, guid: 4ad02ffd6c69bfa488101e97fae446d3, type: 3}
+  - id: 4
+    type: 0
+    sprite: {fileID: 21300000, guid: 9122d406989f516439d5b9b58ec96fb1, type: 3}
+  - id: 5
+    type: 0
+    sprite: {fileID: 21300000, guid: 449494b859cf2eb4eb3911ce3a1a4016, type: 3}
+  - id: 101
+    type: 1
+    sprite: {fileID: 21300000, guid: 3867ce1df4619464e95e2e95fc0170d9, type: 3}
+  - id: 102
+    type: 1
+    sprite: {fileID: 21300000, guid: 42f5ce1b00dbecf4d971f61670d16762, type: 3}
+  - id: 201
+    type: 2
+    sprite: {fileID: 21300000, guid: 86d4627718e99cc409748e76bc4ee268, type: 3}
+  - id: 202
+    type: 2
+    sprite: {fileID: 21300000, guid: 3a2fcebf9bb34ed42b6268b6b91e14a4, type: 3}
+  - id: 203
+    type: 0
+    sprite: {fileID: 21300000, guid: ffc7ab6b6d5c62f4d97e335624d6cf05, type: 3}
+  - id: 204
+    type: 0
+    sprite: {fileID: 21300000, guid: 49a1d597292127444b7b57daf229df85, type: 3}
   roundPanel: {fileID: 558962813}
   gameoverPanel: {fileID: 928693185}
   charaAnim: {fileID: 713453006}
@@ -1205,6 +1239,7 @@ MonoBehaviour:
   resource: 0
   water: 0
   pollution: 0
+  ownedTreasure: []
   playerText: {fileID: 771740238}
   isMyTurn: 0
   isEnded: 0
@@ -1350,6 +1385,7 @@ MonoBehaviour:
   resource: 0
   water: 0
   pollution: 0
+  ownedTreasure: []
   playerText: {fileID: 882699621}
   isMyTurn: 0
   isEnded: 0
@@ -1691,7 +1727,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 553.1, y: -84.4}
+  m_AnchoredPosition: {x: 614, y: -147}
   m_SizeDelta: {x: -1466.8, y: -728.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &501817930
@@ -3974,6 +4010,7 @@ MonoBehaviour:
   resource: 0
   water: 0
   pollution: 0
+  ownedTreasure: []
   playerText: {fileID: 448761148}
   isMyTurn: 0
   isEnded: 0
@@ -5234,6 +5271,7 @@ GameObject:
   - component: {fileID: 1813415431}
   - component: {fileID: 1813415433}
   - component: {fileID: 1813415432}
+  - component: {fileID: 1813415434}
   m_Layer: 5
   m_Name: MINIGAME
   m_TagString: Untagged
@@ -5299,6 +5337,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1813415430}
   m_CullTransparentMesh: 0
+--- !u!114 &1813415434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813415430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b3ed849bf91f374c9de6ccba0532c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainGame: {fileID: 271137106}
+  calamityCount: {fileID: 626801628}
+  treasureCount: {fileID: 20175465}
 --- !u!1 &1895203224
 GameObject:
   m_ObjectHideFlags: 0
