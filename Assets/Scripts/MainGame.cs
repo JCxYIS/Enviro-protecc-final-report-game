@@ -13,6 +13,7 @@ public class MainGame : MonoBehaviour
     private int currentPlayer = 0;
     public RoundPanel roundPanel;
     public GameObject gameoverPanel;
+    public MiniGay minigamePanel;
     public Animator charaAnim;
 
 
@@ -22,6 +23,7 @@ public class MainGame : MonoBehaviour
     {
         roundPanel.gameObject.SetActive(false);
         gameoverPanel.SetActive(false);
+        minigamePanel.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -119,13 +121,15 @@ public class Transportation
         public int less;
         public int most;
     }
+    public string name;
     public RandomFormat canMove;
     public RandomFormat addResource;
     public RandomFormat addWater;
     public RandomFormat addPollute;
-    [SerializeField] Text transText; 
+    [SerializeField] Text transText, transName; 
     public void UpdateText()
     {
+        transName.text = name;
         string s = "";
         s += $"-<color=green>可移動 <b>{canMove.less}</b>~<b>{canMove.most}</b> 格</color>-\n";
         s += $"<color=gray>消耗 <b>1</b> 分鐘</color>\n";

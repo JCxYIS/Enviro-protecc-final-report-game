@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class Player : MonoBehaviour {
-    public int time = 40;
+    public int time = 0;
     public int resource;
     public int water;
     public int pollution;
@@ -33,7 +33,7 @@ public class Player : MonoBehaviour {
         
         if (isEnded)
         {
-            kwonkwonImage.color = Color.white;
+            kwonkwonImage.color = Color.clear;
         }
         else if(isMyTurn)
         {
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour {
         }
         else
         {
-            kwonkwonImage.color = Color.clear;
+            kwonkwonImage.color = Color.black;
         }
     }
 }

@@ -52,7 +52,7 @@ public class RoundPanel : MonoBehaviour {
     }
     public void StartMiniGame()
     {
-        throw new System.Exception();
+        mainGame.minigamePanel.StartGame();
     }
     public void OptionBus()
     {
