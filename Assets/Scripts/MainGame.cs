@@ -8,6 +8,7 @@ public class MainGame : MonoBehaviour
 {
     public Player[] player = new Player[3];
     public Transportation[] transportations = new Transportation[4];
+    public Card[] cards;
     private int currentRound = 1;
     private int currentPlayer = 0;
     public RoundPanel roundPanel;
@@ -45,7 +46,7 @@ public class MainGame : MonoBehaviour
         cplayer.resource += res;
         cplayer.water += water;
         cplayer.pollution += pollute;
-        cplayer.time -= 1;
+        cplayer.time += 1;
         
         roundPanel.SetValues(move, res, water, pollute, currentRound);
 
@@ -84,9 +85,13 @@ public class MainGame : MonoBehaviour
         }
         Debug.Log($"- Player {currentPlayer}'s phase -");
     }
+    public Player GetCurrentPlayer()
+    {
+        return player[currentPlayer];
+    }
     public void ThisPlayerRideBus()
     {
-        player[currentPlayer].time -= 2;
+        player[currentPlayer].time += 2;
         Debug.Log($"Player {currentPlayer} decided to ride the bus!");
     }
     public void ThisPlayerHasArrived()
@@ -133,4 +138,14 @@ public class Transportation
     {
         return UnityEngine.Random.Range(rand.less, rand.most+1);
     }
+}
+
+
+[Serializable]
+public class Card 
+{
+    public enum Type {clamity, treasure, chance};
+    public int id;
+    public Type type;
+    public Sprite sprite;
 }
