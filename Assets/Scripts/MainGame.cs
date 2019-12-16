@@ -14,6 +14,7 @@ public class MainGame : MonoBehaviour
     public RoundPanel roundPanel;
     public GameObject gameoverPanel;
     public MiniGay minigamePanel;
+    public SetParam setParamPanel;
     public Animator charaAnim;
 
 
@@ -24,6 +25,7 @@ public class MainGame : MonoBehaviour
         roundPanel.gameObject.SetActive(false);
         gameoverPanel.SetActive(false);
         minigamePanel.gameObject.SetActive(false);
+        setParamPanel.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -99,11 +101,6 @@ public class MainGame : MonoBehaviour
     public Player GetCurrentPlayer()
     {
         return player[currentPlayer];
-    }
-    public void ThisPlayerRideBus()
-    {
-        player[currentPlayer].time += 2;
-        Debug.Log($"Player {currentPlayer} decided to ride the bus!");
     }
     public void ThisPlayerHasArrived()
     {

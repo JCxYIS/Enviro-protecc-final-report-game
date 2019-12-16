@@ -56,8 +56,7 @@ public class RoundPanel : MonoBehaviour {
     }
     public void OptionBus()
     {
-        mainGame.ThisPlayerRideBus();
-        EndRound();
+        mainGame.setParamPanel.InitPanel();
     }
     public void PlayerArrived()
     {
