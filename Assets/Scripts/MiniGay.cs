@@ -44,6 +44,8 @@ public class MiniGay : MonoBehaviour
             {
                 if(!mainGame.GetCurrentPlayer().ownedTreasure.Contains(c) && !obtainedTreasure.Contains(c))
                     cardpool.Add(c);
+                if(c.type == Card.Type.clamity && Random.Range(0f, 1f) < 0.7f)
+                    cardpool.Add(c); // 增加 CALAMITY 出現率 
             }
         }
         int getCard = Random.Range(0, cardpool.Count);
