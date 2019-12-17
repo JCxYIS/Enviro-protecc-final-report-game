@@ -59,24 +59,33 @@ public class ChanceGay : MonoBehaviour
     {
         if(writeTreasure)
         {
+            Player p = mainGame.GetCurrentPlayer();
             if(drawedCard.id == 201)
             {
-                mainGame.GetCurrentPlayer().time += 1;
+                p.time += 1;
             }
             else if(drawedCard.id == 202)
             {
-                mainGame.GetCurrentPlayer().ownedRDeffect.Add(drawedCard);
+                p.ownedRDeffect.Add(drawedCard);
             }
             else if(drawedCard.id == 203)
             {
-                mainGame.GetCurrentPlayer().ownedTreasure.Add(drawedCard);
+                p.ownedTreasure.Add(drawedCard);
             }
             else if(drawedCard.id == 204)
             {
-                mainGame.GetCurrentPlayer().time += 5;
-                mainGame.GetCurrentPlayer().ownedTreasure.Add(drawedCard);
-                mainGame.GetCurrentPlayer().resource -= 15;
+                p.time += 5;
+                p.ownedTreasure.Add(drawedCard);
+                p.resource -= 15;
             }
+            else if(drawedCard.id == 205)
+            {
+                p.pollution += 100;
+                p.water += 100;
+                p.resource += 100;
+                mainGame.AllPlayerHasEnded();
+            }
+            Debug.Log($"Used card {drawedCard.id}");
         }
         gameObject.SetActive(false);
     }

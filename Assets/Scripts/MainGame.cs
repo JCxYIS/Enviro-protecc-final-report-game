@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MainGame : MonoBehaviour
 {
     public Player[] player = new Player[3];
+    public Player averageContainer;
     public Transportation[] transportations = new Transportation[4];
     public Card[] cards;
     private int currentRound = 1;
@@ -36,7 +37,22 @@ public class MainGame : MonoBehaviour
         {
             transportations[i].UpdateText();
         }
+
+        int timAV = 0, resAV = 0, watAV = 0, polAV = 0;
+        for(int i = 0; i < player.Length; i++)
+        {
+            timAV += player[i].time;
+            resAV += player[i].resource;
+            watAV += player[i].water;
+            polAV += player[i].pollution;
+        }
+        averageContainer.time = timAV / player.Length;
+        averageContainer.resource = resAV / player.Length;
+        averageContainer.water = watAV / player.Length;
+        averageContainer.pollution = polAV / player.Length;
+
         player[currentPlayer].isMyTurn = true;
+
 
         if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(101)))
             transportations[4].UpdateText();
@@ -46,6 +62,10 @@ public class MainGame : MonoBehaviour
             transportations[6].UpdateText();
         if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(204))) // 遠東
             transportations[7].UpdateText();
+        if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(103))) // 施國深乾啦
+            transportations[8].UpdateText();
+        if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(104))) // 吾人積
+            transportations[9].UpdateText();
 
     }
 
@@ -55,11 +75,11 @@ public class MainGame : MonoBehaviour
         Player cplayer = player[currentPlayer];
         if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(101)) && order == 2) // 皮卡車
             order = 4;
-        else if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(102)) && order == 1) // 韓總bike
+        if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(102)) && order == 1) // 韓總bike
             order = 5;
-        else if(GetCurrentPlayer().ownedRDeffect.Contains(GetCardByID(202)) && order == 2) // shared bike
+        if(GetCurrentPlayer().ownedRDeffect.Contains(GetCardByID(202)) && order == 2) // shared bike
             order = 6;
-        else if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(203)) && order == 0) // marathron
+        if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(203)) && order == 0) // marathron
         {
             cplayer.card203WalkCount++;
             if(cplayer.card203WalkCount >= 3)
@@ -68,8 +88,12 @@ public class MainGame : MonoBehaviour
                 cplayer.card203WalkCount = 0;
             }
         }
-        else if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(204)) && order == 3) // far east
+        if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(204)) && order == 3) // far east
             order = 7;
+        if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(103)) && order == 0) // 施國深乾啦
+            order = 8;
+        if(GetCurrentPlayer().ownedTreasure.Contains(GetCardByID(104)) && order == 3) // 吾人積
+            order = 9;
         
         Transportation usetrans = transportations[order];
         int move = usetrans.PickRandom(usetrans.canMove);
@@ -129,7 +153,12 @@ public class MainGame : MonoBehaviour
         player[currentPlayer].isEnded = true;
         Debug.Log($"- Player {currentPlayer} has ended! -");
     }
-
+    public void AllPlayerHasEnded()
+    {
+        for(int i = 0; i < player.Length; i++)
+            player[i].isEnded = true;
+        Debug.Log($"- All Player has ended! -");
+    }
 
     Card GetCardByID(int id)
     {
